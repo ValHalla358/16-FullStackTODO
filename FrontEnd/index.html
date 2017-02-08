@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Very Simple ToDo List</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <link rel="stylesheet" href="bower_components/openSans/openSans.css" />
+    <link rel="stylesheet" href="bower_components/bowlbyOneSC/bowlbyOneSC.css" />
+    <link rel="stylesheet" href="bower_components/ubuntu/ubuntu.css" />
+    <link rel="stylesheet" href="bower_components/oswald/oswald.css" />
+    <link rel="stylesheet" href="bower_components/raleway/raleway.css" />
+    <link rel="stylesheet" href="bower_components/lobster/lobster.css" />
+    <link rel="stylesheet" href="bower_components/pacifico/pacifico.css" />
+    <link rel="stylesheet" href="bower_components/josefinSans/josefinSans.css" />
+    <link rel="stylesheet" href="bower_components/amaticSC/amaticSC.css" />
+    <link rel="stylesheet" href="bower_components/alegreya/alegreya.css" />
+    <link rel="stylesheet" href="bower_components/lato/lato.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/styles/styles.css">
+    <!-- endinject -->
+</head>
+
+<body ng-controller="vstdaController as vm">
+    <!-- bower:js -->
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <!-- endbower -->
+    <h1>Your simple ToDo List</h1>
+    <div class="mainContent">
+        <div class="sortButton">
+            <button class="btn btn-primary" ng-click="sortType = 'task'">Sort by Task</button>
+            <button class="btn btn-primary" ng-click="sortType = 'class'">Sort by Priority</button>
+        </div>
+        <table class="table">
+            <header>
+                <tr>
+                    <th>Date Created</th>
+                    <th>Task</th>
+                    <th>Priority</th>
+                </tr>
+            </header>
+            <tbody>
+                <tr class="table-danger" ng-repeat="x in vm.myToDo | orderBy:sortType">
+                    <td>{{x.createDate| date: mm/dd/yyyy}}</td>
+                    <td>
+                        <p ng-click="editing =!editing" ng-hide="editing">{{x.task}}</p>
+                        <div class="input-group">
+                            <input ng-model="x.task" ng-blur="editing=!editing" ng-show="editing">
+                            <span class="input-group-addon" ng-click="vm.putToDoList(x.toDoListEntryId, x)">edit</span>
+                        </div>
+                    </td>
+                    <td>
+                        <p ng-click="editing =! editing" ng-hide="editing">{{x.priority}}</p>
+                        <div class="col-md-4 ">
+                            <select id="selectbasic " name="selectbasic " class="form-control " ng-model="x.priority " ng-blur="editing=!editing" ng-show="editing">
+                                <option value="High ">1.High Priority</option>
+                                <option value="Medium ">2.Medium Priority</option>
+                                <option value="Low ">3.Low Priority</option>
+                            </select>
+                        </div>
+                        <span class="input-group-addon" ng-click="vm.putToDoList(x.toDoListEntryId, x)">edit</span>
+                    </td>
+                    <td><a href="" ng-click="vm.deleteToDoList(x.toDoListEntryId)">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-inline inputToDoItem ">
+            <div class="form-group ">
+                <input class="form-control " type="text " ng-model="vm.task " placeholder="Enter Task ">
+            </div>
+            <div class="form-group ">
+                <label class="col-md-4 control-label " for="selectbasic ">Priority</label>
+                <div class="col-md-4 ">
+                    <select id="selectbasic " name="selectbasic " class="form-control " ng-model="vm.priority ">
+                        <option value="High ">1.High Priority</option>
+                        <option value="Medium ">2.Medium Priority</option>
+                        <option value="Low ">3.Low Priority</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group addRow">
+                <label class="col-md-4 control-label " for="singlebutton ">Add Task</label>
+                <div class="col-md-4 ">
+                    <button id="singlebutton " name="singlebutton " class="btn btn-primary " ng-click="vm.postToDoList() ">Add</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- inject:js -->
+    <script src="/app/app.js"></script>
+    <script src="/app/vstda.factory.js"></script>
+    <script src="/app/vstdacontroller.js"></script>
+    <!-- endinject -->
+</body>
+
+</html>

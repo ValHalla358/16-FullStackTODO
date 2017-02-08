@@ -1,0 +1,72 @@
+body {
+    background: rgba(132, 41, 57, .52);
+}
+
+h1 {
+    font-family: Amatic SC, cursive;
+    border-bottom-width: 10px;
+    border-bottom-color: black;
+    font-size: 5em;
+    text-shadow: 2px 2px #fff;
+}
+
+h1 {
+    text-align: center;
+}
+
+.mainContent {
+    text-align: center;
+}
+
+.table {
+    margin: auto;
+    width: 70%;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 10px 5px 5px rgba(0, 0, 0, .72);
+    padding: 10px;
+    background: rgba(226, 215, 145, .62);
+}
+
+.sortButton {
+    margin-bottom: 20px;
+}
+
+.form-inline {
+    margin-top: 20px;
+}
+
+.btn-primary {
+    background: rgba(116, 169, 132, .73);
+    border: none;
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+,
+,
+.form-control {
+    background-color: rgba(226, 215, 145, .72);
+    border: none;
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+.input-group-addon {
+    background: rgba(116, 169, 132, .73);
+    font-weight: bold;
+    color: #fff;
+}
+
+td,
+th {
+    font-family: Josefin Sans, Helvetica, cursive;
+    font-size: 1.6em;
+    text-align: center;
+}
+
+label {
+    font-family: Raleway, Helvetica, sans-serif;
+}
+
+a {
+    color: #1c731b;
+}
